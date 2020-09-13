@@ -96,6 +96,7 @@ $this->saveDefaultConfig();
     }
     public function setRequirePermission(bool $flag): void{
         $this->getConfig()->set("require-permission", $flag);
+        $this->getConfig()->save();
     }
 
     public function getMaintenanceMode(): Config{
