@@ -74,29 +74,29 @@ $this->saveDefaultConfig();
         return $this->getConfig()->get("command");
     }
     //for API's in the future.
-    public function setCommandName(string $command): void{
-        $this->getConfig()->set("command", $command);
-        $this->getConfig()->save();
+    public static function setCommandName(string $command): void{
+        self::getAPI()->getConfig()->set("command", $command);
+        self::getAPI()->save();
     }
-    public function setOverwrittenCommand(string $flag): void{
-        $this->getConfig()->set("overwrite-command", $flag);
-        $this->getConfig()->save();
+    public static function setOverwrittenCommand(string $flag): void{
+        self::getAPI()->getConfig()->set("overwrite-command", $flag);
+        self::getAPI()->getConfig()->save();
     }
-    public function setCanOpBypass(bool $flag): void{
-        $this->getConfig()->set("op-bypass", $flag);
-        $this->getConfig()->save();
+    public static function setCanOpBypass(bool $flag): void{
+        self::getAPI()->getConfig()->set("op-bypass", $flag);
+        self::getAPI()->getConfig()->save();
     }
-    public function setAliases(bool $flag): void{
-        $this->getConfig()->set("require-aliases", $flag);
-        $this->getConfig()->save();
+    public static function setAliases(bool $flag): void{
+        self::getAPI()->getConfig()->set("require-aliases", $flag);
+        self::getAPI()->getConfig()->save();
     }
-    public function setPermissionMessage(bool $flag): void{
-        $this->getConfig()->set("perm-msg-flag", $flag);
-        $this->getConfig()->save();
+    public static function setPermissionMessage(bool $flag): void{
+        self::getAPI()->getConfig()->set("perm-msg-flag", $flag);
+        self::getAPI()->getConfig()->save();
     }
-    public function setRequirePermission(bool $flag): void{
-        $this->getConfig()->set("require-permission", $flag);
-        $this->getConfig()->save();
+    public static function setRequirePermission(bool $flag): void{
+        self::getAPI()->getConfig()->set("require-permission", $flag);
+        self::getAPI()->getConfig()->save();
     }
 
     public function getMaintenanceMode(): Config{
