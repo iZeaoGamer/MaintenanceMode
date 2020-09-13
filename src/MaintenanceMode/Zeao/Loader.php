@@ -34,7 +34,7 @@ $this->saveDefaultConfig();
             if($this->isKickedByAdminFlag()){
                 $player->kick(TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
             }else{
-                $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
+                $player->kick("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))), false);
             }
         }
     }
