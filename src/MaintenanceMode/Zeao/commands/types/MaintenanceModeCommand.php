@@ -31,7 +31,7 @@ public function execute(CommandSender $sender, string $label, array $args): bool
 if(!$this->testPermissionSilent($sender)){
     return false;
 }
-if(!$sender->isOp()){
+if(!$this->plugin->requirePermission() and !$sender->isOp()){
     $sender->sendMessage($this->getPermissionMessage());
     return true;
 }
