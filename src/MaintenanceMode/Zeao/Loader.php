@@ -82,7 +82,7 @@ $this->saveDefaultConfig();
         $this->getConfig()->set("overwrite-command", $flag);
         $this->getConfig()->save();
     }
-    public function setCanOPBypass(bool $flag): void{
+    public function setCanOpBypass(bool $flag): void{
         $this->getConfig()->set("op-bypass", $flag);
         $this->getConfig()->save();
     }
