@@ -32,9 +32,13 @@ permission: "maintenance.command"
 # Sets the permission, needed to use these commands.
 # This option will only work if require-permission is enabled (set to true)
 
+
 admin-flag: false
 ## This option will allow the server to use "kicked by admin" in the kicked message.
 # False = No admin kicked message.
+
+op-bypass: true
+## Allow operators to bypass the Maintenance mode.
 
 no-perm-message: "&cYou do not have permission to use this command."
 # customizable no permission message.

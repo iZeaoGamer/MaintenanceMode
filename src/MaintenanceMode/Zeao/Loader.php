@@ -27,6 +27,9 @@ $this->saveDefaultConfig();
     public function onJoin(PlayerJoinEvent $event){
         $player = $event->getPlayer();
         $name = $player->getName();
+        if($this->canOpBypass() and $player->isOp()){
+            return false;
+        }
         if(!$this->isWhitelisted($name) and $this->isMaintenanceMode()){ //todo allow bypass for operators, or even make permissions optional.
             if($this->isKickedByAdminFlag()){
                 $player->kick(TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
@@ -63,11 +66,14 @@ $this->saveDefaultConfig();
     public function hasOverwritedCommand(): bool{
         return $this->getConfig()->get("overwrite-command", true);
     }
+    public function canOpBypass(): bool{
+        return $this->getConfig()->get("op-bypass", true);
+    }
     
     public function getCommandName(): string{
         return $this->getConfig()->get("command");
     }
-    //for API's.
+    //for API's in the future.
     public function setCommandName(string $command): void{
         $this->getConfig()->set("command", $command);
         $this->getConfig()->save();
@@ -75,6 +81,21 @@ $this->saveDefaultConfig();
     public function setOverwrittenCommand(string $flag): void{
         $this->getConfig()->set("overwrite-command", $flag);
         $this->getConfig()->save();
+    }
+    public function setCanOPBypass(bool $flag): void{
+        $this->getConfig()->set("op-bypass", $flag);
+        $this->getConfig()->save();
+    }
+    public function setAliases(bool $flag): void{
+        $this->getConfig()->set("require-aliases", $flag);
+        $this->getConfig()->save();
+    }
+    public function setPermissionMessage(bool $flag): void{
+        $this->getConfig()->set("perm-msg-flag", $flag);
+        $this->getConfig()->save();
+    }
+    public function setRequirePermission(bool $flag): void{
+        $this->getConfig()->set("require-permission", $flag);
     }
 
     public function getMaintenanceMode(): Config{
