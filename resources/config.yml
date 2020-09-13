@@ -1,0 +1,59 @@
+## MaintenanceMode Config file
+
+## Command Details
+
+# This section allows you to edit its command name, descriptions, permissions, etc etc.
+overwrite-command: false
+# This option allows you to enable a command overwrite.
+# Please only enable this option
+# if you're having the same command as another plugin or software (/whitelist per example)
+
+command: "maintenance"
+# command has no slashes. the plugin wil do that for you. :)
+
+require-aliases: true
+# if the plugin should require command aliases.
+
+aliases: ["mm"]
+## this option will only work if require-aliases is set to true.
+
+usage: "&5Usage: &6/{name} <toggle|add|remove>"
+## you can use {name} for command's name.
+## You can also use & symbols as color coding.
+
+perm-msg-flag: true
+# this option will allow customizable permission set message.
+
+require-permission: true
+## This option will decide whether or not the player should be required with permissions.
+# If this option is set to false, then it'll require operator to use this command.
+
+permission: "maintenance.command"
+# Sets the permission, needed to use these commands.
+# This option will only work if require-permission is enabled (set to true)
+
+admin-flag: false
+## This option will allow the server to use "kicked by admin" in the kicked message.
+# False = No admin kicked message.
+
+no-perm-message: "&cYou do not have permission to use this command."
+# customizable no permission message.
+# The perm-msg-flag must be set to true for this to work.
+## You can also use & symbols as color coding.
+
+
+## Plugin Configurations:
+maintenance-mode: false 
+# Whether to enable or disable maintenance mode.
+# false = No maintenance
+# true = Maintenance mode activated.
+# Default: false 
+
+whitelist-message: "&c&lServer is currently in maintenance mode.{line}&7&l[&4&lWe'll be back soon!&7&l]"
+# ^^ Whitelist Message goes here. ^^
+# NOTE - Do not include the "Kicked by admin" flag in the message.
+# It'll automatically display this if you have "admin-flag" set to true.
+
+
+## End of line. No seriously, You're done.
+
