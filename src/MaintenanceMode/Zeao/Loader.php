@@ -76,7 +76,7 @@ $this->saveDefaultConfig();
     //for API's in the future.
     public static function setCommandName(string $command): void{
         self::getAPI()->getConfig()->set("command", $command);
-        self::getAPI()->save();
+        self::getAPI()->getConfig()->save();
     }
     public static function setOverwrittenCommand(string $flag): void{
         self::getAPI()->getConfig()->set("overwrite-command", $flag);
