@@ -32,9 +32,9 @@ $this->saveDefaultConfig();
         }
         if(!$this->isWhitelisted($name) and $this->isMaintenanceMode()){ //todo allow bypass for operators, or even make permissions optional.
             if($this->isKickedByAdminFlag()){
-                $player->kick(TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
+                $player->close(TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
             }else{
-                $player->kick("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))), false);
+                $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))), false);
             }
         }
     }
