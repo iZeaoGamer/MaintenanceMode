@@ -43,7 +43,7 @@ if(!$this->plugin->requirePermission() and !$sender->isOp()){
 switch($args[0]){
     case "toggle":
 $this->plugin->setMaintenanceMode(!$this->plugin->isMaintenanceMode());
-$sender->sendMessage(TextFormat::colorize("&5Maintenance is now turned &6" . ($this->plugin->isMaintenanceMode() ? "true" : "false") . "&5."));
+$sender->sendMessage(TextFormat::colorize("&5Maintenance is now set to &6" . ($this->plugin->isMaintenanceMode() ? "true" : "false") . "&5."));
 return true;
     break;
     case "add":
@@ -82,7 +82,7 @@ return true;
                     return true;
     break;
     default:
-    $sender->sendMessage(TextFormat::colorize($this->plugin->getConfig()->get("usage")));
+    $sender->sendMessage($this->getUsage());
     return true;
 }
 return true;
