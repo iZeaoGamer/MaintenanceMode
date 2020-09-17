@@ -32,9 +32,9 @@ $this->saveDefaultConfig();
         }
         if(!$this->isWhitelisted($name) and $this->isMaintenanceMode()){ //todo allow bypass for operators, or even make permissions optional.
             if($this->isKickedByAdminFlag()){
-                $player->close(TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
+                $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
             }else{
-                $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))), false);
+                $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
             }
         }
     }
@@ -55,19 +55,19 @@ $this->saveDefaultConfig();
     }
 
     public function isPermissionMessage(): bool{
-        return $this->getConfig()->get("perm-msg-flag", true);
+        return $this->getConfig()->get("perm-msg-flag");
     }
     public function requirePermission(): bool{
-        return $this->getConfig()->get("require-permission", true);
+        return $this->getConfig()->get("require-permission");
     }
     public function hasAliases(): bool{
-        return $this->getConfig()->get("require-aliases", true);
+        return $this->getConfig()->get("require-aliases");
     }
     public function hasOverwritedCommand(): bool{
-        return $this->getConfig()->get("overwrite-command", true);
+        return $this->getConfig()->get("overwrite-command");
     }
     public function canOpBypass(): bool{
-        return $this->getConfig()->get("op-bypass", true);
+        return $this->getConfig()->get("op-bypass");
     }
     
     public function getCommandName(): string{
@@ -113,6 +113,6 @@ $this->saveDefaultConfig();
      *  @return bool
      */
     public function isKickedByAdminFlag(): bool{
-        return $this->getConfig()->get("admin-flag", true);
+        return $this->getConfig()->get("admin-flag");
     }
         }
