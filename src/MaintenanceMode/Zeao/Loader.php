@@ -47,7 +47,7 @@ $this->saveDefaultConfig();
         $this->getMaintenanceMode()->save();
     }
     public function isMaintenanceMode(): bool{
-        return $this->getConfig()->get("maintenance-mode", true);
+        return $this->getConfig()->get("maintenance-mode");
     }
     public function setMaintenanceMode(bool $flag){
         $this->getConfig()->set("maintenance-mode", $flag);
