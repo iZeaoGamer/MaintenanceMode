@@ -30,12 +30,13 @@ $this->saveDefaultConfig();
         if($this->canOpBypass() and $player->isOp()){
             return false;
         }
-        if(!$this->isWhitelisted($name) and $this->isMaintenanceMode()){ //todo allow bypass for operators, or even make permissions optional.
+        if(!$this->isWhitelisted($name) and $this->isMaintenanceMode()){ 
             if($this->isKickedByAdminFlag()){
                 $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
             }else{
                 $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
             }
+            $event->setJoinMessage(TextFormat::colorize("&4" . $player->getName() . " &ctried to join, but isn't whitelisted on this server.")); ///todo make this customizable and add permission to be able to see this message.
         }
     }
     public function setWhitelisted(string $name, bool $add = false){
