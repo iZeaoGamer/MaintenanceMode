@@ -71,7 +71,7 @@ self::getAPI()->getConfig()->set("maintenance-mode", $flag);
 
    function isPermissionMessage(bool $static = false): bool{
        if($static){
-return self::getAPI()->getConfig()-<get("perm-msg-flag");
+return self::getAPI()->getConfig()->get("perm-msg-flag");
        }
         return $this->getConfig()->get("perm-msg-flag");
     }
@@ -156,6 +156,5 @@ return self::getAPI()->getMaintenanceMode()->exists(strtolower($name), true);
         return self::getAPI()->getConfig()->get("admin-flag");
     }
 return $this->getConfig()->get("admin-flag");
-    }
     }
         }
