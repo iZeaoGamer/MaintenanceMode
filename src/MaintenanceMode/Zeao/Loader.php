@@ -157,4 +157,5 @@ return self::getAPI()->getMaintenanceMode()->exists(strtolower($name), true);
     }
 return $this->getConfig()->get("admin-flag");
     }
+    }
         }
