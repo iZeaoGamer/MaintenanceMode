@@ -8,6 +8,7 @@ use pocketmine\event\player\PlayerJoinEvent;
 use MaintenanceMode\Zeao\commands\CommandManager;
 use pocketmine\utils\TextFormat;
 use pocketmine\utils\Config;
+use pocketmine\scheduler\ClosureTask;
 
 class Loader extends PluginBase implements Listener{
     public $whitelisted;
@@ -31,13 +32,19 @@ $this->saveDefaultConfig();
             return false;
         }
         if(!$this->isWhitelisted($name) and $this->isMaintenanceMode()){ 
+            //hack to ensure the kicked message actually works properly.
+            $this->getScheduler()->scheduleDelayedTask(new ClosureTask(function(int $currentTick) use ($player, $name): void{
             if($this->isKickedByAdminFlag()){
                 $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
             }else{
                 $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
+          
             }
-            $event->setJoinMessage(TextFormat::colorize("&4" . $player->getName() . " &ctried to join, but isn't whitelisted on this server.")); ///todo make this customizable and add permission to be able to see this message.
-        }
+            }), 20 * 2);
+                          
+            $event->setJoinMessage(TextFormat::colorize("&4" . $name . " &ctried to join, but isn't whitelisted on this server. Disconnecting user in 2 seconds..")); ///todo make this customizable and add permission to be able to see this message.
+           
+            }
     }
     public function setWhitelisted(string $name, bool $add = false){
         if($add){
@@ -47,31 +54,56 @@ $this->saveDefaultConfig();
         }
         $this->getMaintenanceMode()->save();
     }
-    public function isMaintenanceMode(): bool{
+    function isMaintenanceMode(bool $static): bool{
+        if($static){
+return self::getAPI()->getConfig()->get("maintenance-mode");
+        }
         return $this->getConfig()->get("maintenance-mode");
     }
-    public function setMaintenanceMode(bool $flag){
+    function setMaintenanceMode(bool $flag, bool $static = false){
+        if($static){
+self::getAPI()->getConfig()->set("maintenance-mode", $flag);
+        }else{
         $this->getConfig()->set("maintenance-mode", $flag);
+        }
         $this->getConfig()->save();
     }
 
-    public function isPermissionMessage(): bool{
+   function isPermissionMessage(bool $static = false): bool{
+       if($static){
+return self::getAPI()->getConfig()-<get("perm-msg-flag");
+       }
         return $this->getConfig()->get("perm-msg-flag");
     }
-    public function requirePermission(): bool{
+    function requirePermission(bool $static = false): bool{
+        if($static){
+return self::getAPI()->getConfig()->get("require-permission");
+        }
         return $this->getConfig()->get("require-permission");
     }
-    public function hasAliases(): bool{
+    function hasAliases(bool $static = false): bool{
+        if($tatic){
+return self::getAPI()->getConfig()->get("require-aliases");
+        }
         return $this->getConfig()->get("require-aliases");
     }
-    public function hasOverwritedCommand(): bool{
+    function hasOverwritedCommand(bool $static = false): bool{
+        if($static){
+return self::getAPI()->getConfig()->get("overwrite-command");
+        }
         return $this->getConfig()->get("overwrite-command");
     }
-    public function canOpBypass(): bool{
+    function canOpBypass(bool $static = false): bool{
+        if($static){
+return self::getAPI()->getConfig()->get("op-bypass");
+        }
         return $this->getConfig()->get("op-bypass");
     }
     
-    public function getCommandName(): string{
+    function getCommandName(bool $static = false): string{
+        if($static){
+return self::getAPI()->getConfig()->get("command");
+        }
         return $this->getConfig()->get("command");
     }
     //for API's in the future.
@@ -100,20 +132,29 @@ $this->saveDefaultConfig();
         self::getAPI()->getConfig()->save();
     }
 
-    public function getMaintenanceMode(): Config{
+    function getMaintenanceMode(bool $static = false): Config{
+        if($static){
+return self::getAPI()->whitelisted;
+        }
         return $this->whitelisted;
     }
     /**
      *  @return bool
      */
     
-     public function isWhitelisted(string $name): bool{
+     function isWhitelisted(string $name, bool $static = false): bool{
+         if($static){
+return self::getAPI()->getMaintenanceMode()->exists(strtolower($name), true);
+         }
         return $this->getMaintenanceMode()->exists(strtolower($name), true);
     }
     /**
      *  @return bool
      */
-    public function isKickedByAdminFlag(): bool{
-        return $this->getConfig()->get("admin-flag");
+    function isKickedByAdminFlag(bool $static = false): bool{
+        if($static){
+        return self::getAPI()->getConfig()->get("admin-flag");
+    }
+return $this->getConfig()->get("admin-flag");
     }
         }
