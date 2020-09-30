@@ -31,7 +31,8 @@ $this->saveDefaultConfig();
         if($this->canOpBypass() and $player->isOp()){
             return false;
         }
-        if(!$this->isWhitelisted($name) and $this->isMaintenanceMode()){ 
+        if(!$this->isWhitelisted($name) and $this->isMaintenanceMode()){
+           $player->setImmobile(true);
             //hack to ensure the kicked message actually works properly.
             $this->getScheduler()->scheduleDelayedTask(new ClosureTask(function(int $currentTick) use ($player, $name): void{
             if($this->isKickedByAdminFlag()){
@@ -42,7 +43,8 @@ $this->saveDefaultConfig();
             }
                 if($player->isOp()){ //todo make this customizable and add permission options.
                $event->setJoinMessage(TextFormat::colorize("&4" . $name . " &ctried to join, but isn't whitelisted on this server. Disconnecting user in 2 seconds..")); ///todo make this customizable and add permission to be able to see this message.
-            }), 20 * intval($this->getConfig()->get("delay")));
+                }
+                }), 20 * intval($this->getConfig()->get("delay")));
                           
          
             }
