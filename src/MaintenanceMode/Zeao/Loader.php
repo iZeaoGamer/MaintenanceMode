@@ -40,10 +40,11 @@ $this->saveDefaultConfig();
                 $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
           
             }
-            }), 20 * 2);
+                if($player->isOp()){ //todo make this customizable and add permission options.
+               $event->setJoinMessage(TextFormat::colorize("&4" . $name . " &ctried to join, but isn't whitelisted on this server. Disconnecting user in 2 seconds..")); ///todo make this customizable and add permission to be able to see this message.
+            }), 20 * intval($this->getConfig()->get("delay")));
                           
-            $event->setJoinMessage(TextFormat::colorize("&4" . $name . " &ctried to join, but isn't whitelisted on this server. Disconnecting user in 2 seconds..")); ///todo make this customizable and add permission to be able to see this message.
-           
+         
             }
     }
     public function setWhitelisted(string $name, bool $add = false){
