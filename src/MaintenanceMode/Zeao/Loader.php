@@ -82,7 +82,7 @@ return self::getAPI()->getConfig()->get("require-permission");
         return $this->getConfig()->get("require-permission");
     }
     function hasAliases(bool $static = false): bool{
-        if($tatic){
+        if($static){
 return self::getAPI()->getConfig()->get("require-aliases");
         }
         return $this->getConfig()->get("require-aliases");
