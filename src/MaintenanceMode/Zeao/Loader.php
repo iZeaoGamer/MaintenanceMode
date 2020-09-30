@@ -54,7 +54,7 @@ $this->saveDefaultConfig();
         }
         $this->getMaintenanceMode()->save();
     }
-    function isMaintenanceMode(bool $static): bool{
+    function isMaintenanceMode(bool $static = false): bool{
         if($static){
 return self::getAPI()->getConfig()->get("maintenance-mode");
         }
