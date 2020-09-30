@@ -5,6 +5,9 @@
 ## If you put it lower than 1, then kicked message errors may occur, or simply the kicked message won't display at times.
 ## Do not put it on high because if you do, people could easily bypass your maintenance system.
 ## This option is in place to ensure the kicked message bug is fixed within PMMP its self.
+
+## NOTE:
+# Delay is in seconds. so delay: 1 will be 1 second.
 delay: 1
 
 ## Command Details
