@@ -33,17 +33,20 @@ $this->saveDefaultConfig();
         }
         if(!$this->isWhitelisted($name) and $this->isMaintenanceMode()){
            $player->setImmobile(true);
+            $event->setJoinMessage(null);
+            foreach($this->getServer()->getOnlinePlayers() as $online){
+            if($online->isOp()){ //todo make this customizable and add permission options.
+               $online->sendMessage(extFormat::colorize("&4" . $name . " &ctried to join, but isn't whitelisted on this server. Disconnecting user in &4" . intval($this->getConfig()->get("delay")) . " &cseconds..")); ///todo make this customizable and add permission to be able to see this message.
+                }
+            }
             //hack to ensure the kicked message actually works properly.
             $this->getScheduler()->scheduleDelayedTask(new ClosureTask(function(int $currentTick) use ($player, $name): void{
             if($this->isKickedByAdminFlag()){
                 $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
             }else{
                 $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
-          
             }
-                if($player->isOp()){ //todo make this customizable and add permission options.
-               $event->setJoinMessage(TextFormat::colorize("&4" . $name . " &ctried to join, but isn't whitelisted on this server. Disconnecting user in 2 seconds..")); ///todo make this customizable and add permission to be able to see this message.
-                }
+                
                 }), 20 * intval($this->getConfig()->get("delay")));
                           
          
