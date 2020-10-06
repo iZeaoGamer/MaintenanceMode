@@ -43,9 +43,10 @@ permission: "maintenance.command"
 # This option will only work if require-permission is enabled (set to true)
 
 
-admin-flag: false
+admin-flag: false ## We will be rewriting this in the future so it can work better. For now, don't use this flag.
 ## This option will allow the server to use "kicked by admin" in the kicked message.
 # False = No admin kicked message.
+
 
 op-bypass: true
 ## Allow operators to bypass the Maintenance mode.
@@ -69,5 +70,5 @@ whitelist-message: "&c&lServer is currently in maintenance mode.{line}&7&l[&4&lW
 # It'll automatically display this if you have "admin-flag" set to true.
 
 
-## End of line. No seriously, You're done.
+## End of line. No seriously, you're done.
 
