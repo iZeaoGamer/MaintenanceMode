@@ -1,7 +1,7 @@
 ## Maintenance Mode
 
 Welcome to yet another useful plugin called "Maintenance Mode".
-Maintenance Mode, is essentially another whitelist plugin, which is easier to handle, and can allocated more options for you to choose from that no other whitelist plugins offer.
+Maintenance Mode, is essentially another whitelist plugin, which is easier to handle, and can allocate more options for you to choose from that no other whitelist plugins offer.
 Here's our current features:
 
 - Customizable options, feature rich plugin.
