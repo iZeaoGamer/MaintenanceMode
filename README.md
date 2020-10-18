@@ -1,7 +1,7 @@
 ## Maintenance Mode
 
 Welcome to yet another useful plugin called "Maintenance Mode".
-Maintenance Mode, is essentially another whitelist plugin, which is easier to handle, and can allowicate more options for you to choose from that no other whitelist plugins offer.
+Maintenance Mode, is essentially another whitelist plugin, which is easier to handle, and can allocate more options for you to choose from that no other whitelist plugins offer.
 Here's our current features:
 
 - Customizable options, feature rich plugin.
@@ -15,10 +15,12 @@ Here's our current features:
 
 - And so much more in the future!
 
+## NOTE
+- As of dev build #26, please update your config.yml file to have the option "delay". If you do not have this, then errors could occur.
 
 ## Plugin todo list
 - [x] Complete Whitelist sequence.
-- [ ] Add support for more customizabilities. Such as: Ban messsages, kick messages??
+- [ ] Add support for more customizabilities. Such as: Ban messsages, Other punishable messages??
 - [ ] Revamp plugin to mark a new name along with even more customizable options.
 - [ ] Directly edit options in-game!
 

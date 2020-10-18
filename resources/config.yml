@@ -1,63 +1,89 @@
 ## MaintenanceMode Config file
 
+## Behavior option:
+## It's best to put this option as low as possible. The value recommended is atleast 1-2.
+## If you put it lower than 1, then kicked message errors may occur, or simply the kicked message won't display at times.
+## Do not put it on high because if you do, people could easily bypass your maintenance system.
+## This option is in place to ensure the kicked message bug is fixed within PMMP its self.
+
+## NOTE:
+# Delay is in seconds. so delay: 1 will be 1 second.
+delay: 1
+
 ## Command Details
 
 # This section allows you to edit its command name, descriptions, permissions, etc etc.
-overwrite-command: false
+
 # This option allows you to enable a command overwrite.
 # Please only enable this option
 # if you're having the same command as another plugin or software (/whitelist per example)
 
-command: "maintenance"
+overwrite-command: false
 # command has no slashes. the plugin wil do that for you. :)
 
-require-aliases: true
+command: "maintenance"
+
 # if the plugin should require command aliases.
+require-aliases: true
 
-aliases: ["mm"]
 ## this option will only work if require-aliases is set to true.
+aliases: ["mm"]
 
-usage: "&5Usage: &6/{name} <toggle|add|remove>"
 ## you can use {name} for command's name.
 ## You can also use & symbols as color coding.
+usage: "&5Usage: &6/{name} <toggle|add|remove>"
+
+# this option will allow customizable permission set message.
 
 perm-msg-flag: true
 # this option will allow customizable permission set message.
 
-require-permission: true
 ## This option will decide whether or not the player should be required with permissions.
 # If this option is set to false, then it'll require operator to use this command.
+require-permission: true
 
-permission: "maintenance.command"
 # Sets the permission, needed to use these commands.
 # This option will only work if require-permission is enabled (set to true)
+permission: "maintenance.command"
 
-
-admin-flag: false
 ## This option will allow the server to use "kicked by admin" in the kicked message.
 # False = No admin kicked message.
+admin-flag: false ## We will be rewriting this in the future so it can work better. For now, don't use this flag.
 
-op-bypass: true
 ## Allow operators to bypass the Maintenance mode.
+op-bypass: true
 
-no-perm-message: "&cYou do not have permission to use this command."
 # customizable no permission message.
 # The perm-msg-flag must be set to true for this to work.
 ## You can also use & symbols as color coding.
-
+no-perm-message: "&cYou do not have permission to use this command."
 
 ## Plugin Configurations:
-maintenance-mode: false 
+
 # Whether to enable or disable maintenance mode.
 # false = No maintenance
 # true = Maintenance mode activated.
 # Default: false 
+maintenance-mode: false
 
-whitelist-message: "&c&lServer is currently in maintenance mode.{line}&7&l[&4&lWe'll be back soon!&7&l]"
-# ^^ Whitelist Message goes here. ^^
 # NOTE - Do not include the "Kicked by admin" flag in the message.
 # It'll automatically display this if you have "admin-flag" set to true.
+whitelist-message: "&c&lServer is currently in maintenance mode.{line}&7&l[&4&lWe'll be back soon!&7&l]"
 
-
-## End of line. No seriously, You're done.
+## This feature will allow the ability to kick other players early (like the classic whitelist plugin).
+## This is recommended to be set to true
+## if you're using a proxy, and using either one of the sub servers
+## (that isnt the hub).
+## The only concern about setting this to true, is when you join a server
+## and it's whitelisted, you won't be able to see the message.
+## If set to false, you'll see the whitelist message, and less bugs occur,
+## but it won't be professional if you're using a poxy,
+## and attempting to connect to other gamemodes through out your network.
+## Default: false (assuming you're not using a proxy)
+## Set to true (assuming you're using a proxy.)
+## NOTE
+## Recommnded: Only set this to true on other gamemode servers, not the hub.
+## Recommended: Only set to false if you're using a single server.
+kick_early: true
+## End of line. No seriously, you're done.
 
