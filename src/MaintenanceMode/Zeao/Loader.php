@@ -11,6 +11,7 @@ use pocketmine\utils\Config;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\event\player\PlayerPreLoginEvent;
 
+
 class Loader extends PluginBase implements Listener{
     public $whitelisted;
     public static $api;
@@ -64,6 +65,7 @@ $this->saveDefaultConfig();
             
                 $player->close("", TextFormat::colorize(str_replace("{line}", "\n", $this->getConfig()->get("whitelist-message"))));
            
+
                 
                 }), 20 * intval($this->getConfig()->get("delay")));
                           

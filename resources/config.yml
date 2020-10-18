@@ -70,6 +70,7 @@ maintenance-mode: false
 # It'll automatically display this if you have "admin-flag" set to true.
 whitelist-message: "&c&lServer is currently in maintenance mode.{line}&7&l[&4&lWe'll be back soon!&7&l]"
 
+
 ## This feature will allow the ability to kick other players early (like the classic whitelist plugin).
 ## This is recommended to be set to true
 ## if you're using a proxy, and using either one of the sub servers
