@@ -67,7 +67,7 @@ $this->saveDefaultConfig();
            
 
                 
-                }), 20 * intval($this->getConfig()->get("delay") ?? 1));
+                }), 20 * intval($this->getConfig()->get("delay") ?? 2));
                           
          
             }
