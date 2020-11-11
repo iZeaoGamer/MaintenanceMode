@@ -12,7 +12,7 @@
 ## and fixes issues to do with "Disconnected from server" bug.
 ## NOTE:
 # Delay is in seconds. so delay: 1 will be 1 second.
-delay: 1
+delay: 2
 
 ## Command Details
 
