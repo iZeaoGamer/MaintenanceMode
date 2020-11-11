@@ -16,7 +16,7 @@ Here's our current features:
 - And so much more in the future!
 
 ## NOTE
-- As of dev build #26, please update your config.yml file to have the option "delay". If you do not have this, then errors could occur.
+- As of dev build #26, please update your config.yml file to have the option "delay". If you do not have this, then the delay: option will be defaulted to 1! That way, there'll be no errors during the process.
 
 ## Plugin todo list
 - [x] Complete Whitelist sequence.
